@@ -98,6 +98,7 @@ func getReading(target string, outChan chan EMeterReading) {
 				err = json.Unmarshal(response, &reading)
 				if err != nil {
 					log.Printf("error unmarshalling response: %v, json: '%v'", err, respBytes[4:nBytes])
+					break
 				}
 
 				reading.Time = time.Now()
@@ -106,6 +107,7 @@ func getReading(target string, outChan chan EMeterReading) {
 
 				time.Sleep(1 * time.Second)
 			}
+			time.Sleep(10 * time.Second)
 		}
 	}
 }
