@@ -97,7 +97,7 @@ func getReading(target string, outChan chan EMeterReading) {
 
 				err = json.Unmarshal(response, &reading)
 				if err != nil {
-					log.Printf("error unmarshalling response: %v, json: '%v'", err, respBytes[4:nBytes])
+					log.Printf("error unmarshalling response: %v, json: '%v'", err, string(respBytes))
 					break
 				}
 
